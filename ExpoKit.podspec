@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |ss|
     ss.source_files = "ios/Exponent/**/*.{h,m}", "template-files/keys.json"
-    ss.exclude_files = "ios/Exponent/Supporting/**", "ios/Exponent/Versioned/Optional/**/*.{h,m}", "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}", "ios/Exponent/Versioned/Core/Api/EXFacebook.{h,m}", "ios/Exponent/Versioned/Core/Api/FBAds/*.{h,m}", "ios/Exponent/Kernel/Service/EXGoogleAuthManager.{h,m}", "ios/Exponent/Versioned/Core/Api/EXGoogle.{h,m}", "ios/Exponent/Versioned/Core/Api/Components/GoogleMaps/*.{h,m}"
+    ss.exclude_files = "ios/Exponent/Supporting/**", "ios/Exponent/Versioned/Optional/**/*.{h,m}", "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}", "ios/Exponent/Versioned/Core/Api/EXFacebook.{h,m}", "ios/Exponent/Versioned/Core/Api/FBAds/*.{h,m}", "ios/Exponent/Kernel/Services/EXGoogleAuthManager.{h,m}", "ios/Exponent/Versioned/Core/Api/EXGoogle.{h,m}", "ios/Exponent/Versioned/Core/Api/Components/GoogleMaps/*.{h,m}"
 
     ss.preserve_paths = "ios/Exponent/**/*.{h,m}"
     ss.dependency 'Amplitude-iOS', '~> 3.8'
@@ -58,7 +58,7 @@ Pod::Spec.new do |s|
     ss.dependency 'FBAudienceNetwork', '4.99.0'
   end
   s.subspec "Google" do |ss|
-    ss.source_files = 'ios/Exponent/Versioned/Core/Api/Google.{h,m}', "ios/Exponent/Kernel/Service/EXGoogleAuthManager.{h,m}"
+    ss.source_files = 'ios/Exponent/Versioned/Core/Api/EXGoogle.{h,m}', "ios/Exponent/Kernel/Services/EXGoogleAuthManager.{h,m}"
     ss.dependency 'AppAuth', '~> 0.4'
     ss.dependency 'GoogleSignIn', '~> 3.0'
   end

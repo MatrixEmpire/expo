@@ -5,7 +5,11 @@
 #import "EXCachedResourceManager.h"
 #import "EXErrorRecoveryManager.h"
 #import "EXFileSystemManager.h"
+
+#if __has_include("EXGoogleAuthManager.h")
 #import "EXGoogleAuthManager.h"
+#endif
+
 #import "EXHomeModuleManager.h"
 #import "EXKernelAppRegistry.h"
 #import "EXKernelLinkingManager.h"
@@ -23,7 +27,9 @@
 @property (nonatomic, strong) EXBranchManager *branchManager;
 @property (nonatomic, strong) EXCachedResourceManager *cachedResourceManager;
 @property (nonatomic, strong) EXFileSystemManager *fileSystemManager;
+#if __has_include("EXGoogleAuthManager.h")
 @property (nonatomic, strong) EXGoogleAuthManager *googleAuthManager;
+#endif
 @property (nonatomic, strong) EXErrorRecoveryManager *errorRecoveryManager;
 @property (nonatomic, strong) EXHomeModuleManager *homeModuleManager;
 @property (nonatomic, strong) EXKernelLinkingManager *linkingManager;
@@ -102,6 +108,7 @@
   return _fileSystemManager;
 }
 
+#if __has_include("EXGoogleAuthManager.h")
 - (EXGoogleAuthManager *)googleAuthManager
 {
   if (!_googleAuthManager) {
@@ -109,6 +116,7 @@
   }
   return _googleAuthManager;
 }
+#
 
 - (EXKernelLinkingManager *)linkingManager
 {

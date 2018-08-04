@@ -5,7 +5,9 @@
 @class EXBranchManager;
 @class EXErrorRecoveryManager;
 @class EXFileSystemManager;
+#if __has_include("EXGoogleAuthManager.h")
 @class EXGoogleAuthManager;
+#endif
 @class EXKernelLinkingManager;
 @class EXKernelModuleManager;
 @class EXRemoteNotificationManager;
