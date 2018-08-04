@@ -3,7 +3,7 @@
 
 Pod::Spec.new do |s|
   s.name = "ExpoKit"
-  s.version = "2.7.2"
+  s.version = "2.7.4"
   s.summary = 'ExpoKit'
   s.description = 'ExpoKit allows native projects to integrate with the Expo SDK.'
   s.homepage = 'http://docs.expo.io'
@@ -17,26 +17,17 @@ Pod::Spec.new do |s|
   s.subspec "Core" do |ss|
     ss.source_files = "ios/Exponent/**/*.{h,m}", "template-files/keys.json"
     ss.preserve_paths = "ios/Exponent/**/*.{h,m}"
-    ss.exclude_files = "ios/Exponent/Supporting/**", "ios/Exponent/Versioned/Optional/**/*.{h,m}"
+    ss.exclude_files = "ios/Exponent/Supporting/**", "ios/Exponent/Versioned/Optional/**/*.{h,m}", "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}", "ios/Exponent/Versioned/Core/Api/EXFacebook.{h,m}", "ios/Exponent/Versioned/Core/Api/FBAds/*.{h,m}", "ios/Exponent/Kernel/Service/EXGoogleAuthManager.{h,m}", "ios/Exponent/Versioned/Core/Api/EXGoogle.{h,m}", "ios/Exponent/Versioned/Core/Api/GoogleMaps/*.{h,m}"
 
     ss.dependency 'Amplitude-iOS', '~> 3.8'
     ss.dependency 'Analytics', '~> 3.5'
-    ss.dependency 'AppAuth', '~> 0.4'
+
     ss.dependency 'CocoaLumberjack', '~> 3.2.1'
     ss.dependency 'Crashlytics', '~> 3.8'
-    ss.dependency 'FBAudienceNetwork', '4.99.0'
-    ss.dependency 'FBSDKCoreKit', '~> 4.28'
-    ss.dependency 'FBSDKLoginKit', '~> 4.28'
-    ss.dependency 'FBSDKShareKit', '~> 4.28'
     ss.dependency 'Fabric', '~> 1.6'
-    ss.dependency 'GoogleSignIn', '~> 3.0'
-    ss.dependency 'GoogleMaps', '~> 2.5.0'
-    ss.dependency 'Google-Maps-iOS-Utils', '~> 2.1.0'
     ss.dependency 'lottie-ios', '~> 2.5.0'
-    ss.dependency 'GPUImage', '~> 0.1.7'
     ss.dependency 'JKBigInteger2', '0.0.5'
     ss.dependency 'Branch', '~> 0.24.2'
-    ss.dependency 'Google-Mobile-Ads-SDK', '~> 7.22.0'
     ss.dependency 'React' # explicit dependency required for CocoaPods >= 1.5.0
 
     # Universal modules required by ExpoKit so the code compiles
@@ -48,6 +39,36 @@ Pod::Spec.new do |s|
     ss.dependency 'EXCameraInterface'
     ss.dependency 'EXConstantsInterface'
   end
+  s.subspec "AdMob" do |ss|
+    ss.source_files = "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}"
+    ss.dependency "ExpoKit/Core"
+    ss.dependency 'Google-Mobile-Ads-SDK', '~> 7.22.0'
+
+  end
+  s.subspec "FB" do |ss|
+    ss.source_files = 'ios/Exponent/Versioned/Core/Api/EXFacebook.{h,m}'
+    ss.dependency "ExpoKit/Core"
+    ss.dependency 'FBSDKCoreKit', '~> 4.28'
+    ss.dependency 'FBSDKLoginKit', '~> 4.28'
+    ss.dependency 'FBSDKShareKit', '~> 4.28'
+  end
+  s.subspec "FBAds" do |ss|
+    ss.source_files = "ios/Exponent/Versioned/Core/Api/FBAds/*.{h,m}"
+    ss.dependency "ExpoKit/FB"
+    ss.dependency 'FBAudienceNetwork', '4.99.0'
+  end
+  s.subspec "Google" do |ss|
+    ss.source_files = 'ios/Exponent/Versioned/Core/Api/Google.{h,m}', "ios/Exponent/Kernel/Service/EXGoogleAuthManager.{h,m}"
+    ss.dependency 'AppAuth', '~> 0.4'
+    ss.dependency 'GoogleSignIn', '~> 3.0'
+  end
+  s.subspec "GoogleMaps" do |ss|
+    ss.source_files = "ios/Exponent/Versioned/Core/Api/GoogleMaps/*.{h,m}"
+    ss.dependency "ExpoKit/Google"
+    ss.dependency 'GoogleMaps', '~> 2.5.0'
+    ss.dependency 'Google-Maps-iOS-Utils', '~> 2.1.0'
+  end
+
 
   s.subspec "Payments" do |ss|
     ss.dependency "ExpoKit/Core"
@@ -58,6 +79,7 @@ Pod::Spec.new do |s|
   s.subspec "AR" do |ss|
     ss.dependency "ExpoKit/Core"
     ss.source_files = 'ios/Exponent/Versioned/Optional/ARKit/**'
+    ss.dependency 'GPUImage', '~> 0.1.7'
   end
 
   s.subspec "FaceDetector" do |ss|

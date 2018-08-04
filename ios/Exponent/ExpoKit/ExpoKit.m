@@ -5,8 +5,7 @@
 #import "EXAnalytics.h"
 #import "EXBuildConstants.h"
 #import "EXEnvironment.h"
-#import "EXFacebook.h"
-#import "EXGoogleAuthManager.h"
+
 #import "EXKernel.h"
 #import "EXKernelUtil.h"
 #import "EXKernelLinkingManager.h"
@@ -15,9 +14,20 @@
 #import "EXLocalNotificationManager.h"
 #import "EXBranchManager.h"
 
-#import <Crashlytics/Crashlytics.h>
+#if __has_include("EXFacebook.h")
+#import "EXFacebook.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#endif
+#if __has_include("EXGoogleAuthManager.h")
+#import "EXGoogleAuthManager.h"
+#endif
+
+#if __has_include(<GoogleMaps/GoogleMaps.h>)
 #import <GoogleMaps/GoogleMaps.h>
+#endif
+
+#import <Crashlytics/Crashlytics.h>
+
 
 NSString * const EXAppDidRegisterForRemoteNotificationsNotification = @"EXAppDidRegisterForRemoteNotificationsNotification";
 NSString * const EXAppDidRegisterUserNotificationSettingsNotification = @"EXAppDidRegisterUserNotificationSettingsNotification";
@@ -98,14 +108,17 @@ NSString * const EXAppDidRegisterUserNotificationSettingsNotification = @"EXAppD
 
   RCTSetFatalHandler(handleFatalReactError);
 
+#if __has_include("EXFacebook.h")
   if ([EXFacebook facebookAppIdFromNSBundle]) {
     [[FBSDKApplicationDelegate sharedInstance] application:application
                              didFinishLaunchingWithOptions:launchOptions];
   }
+#endif
 
   // init analytics
   [EXAnalytics sharedInstance];
 
+#if __has_include(<GoogleMaps/GoogleMaps.h>)
   NSString *standaloneGMSKey = [[NSBundle mainBundle].infoDictionary objectForKey:@"GMSApiKey"];
   if (standaloneGMSKey && standaloneGMSKey.length) {
     [GMSServices provideAPIKey:standaloneGMSKey];
@@ -116,6 +129,7 @@ NSString * const EXAppDidRegisterUserNotificationSettingsNotification = @"EXAppD
       }
     }
   }
+#endif
 
   // This is safe to call; if the app doesn't have permission to display user-facing notifications
   // then registering for a push token is a no-op
