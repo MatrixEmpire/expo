@@ -31,13 +31,13 @@ Pod::Spec.new do |s|
     ss.dependency 'React' # explicit dependency required for CocoaPods >= 1.5.0
 
     # Universal modules required by ExpoKit so the code compiles
-    ss.dependency 'EXCore'
-    ss.dependency 'EXReactNativeAdapter'
-    ss.dependency 'EXSensorsInterface'
-    ss.dependency 'EXFileSystemInterface'
-    ss.dependency 'EXPermissionsInterface'
-    ss.dependency 'EXCameraInterface'
-    ss.dependency 'EXConstantsInterface'
+    # ss.dependency 'EXCore'
+    # ss.dependency 'EXReactNativeAdapter'
+    # ss.dependency 'EXSensorsInterface'
+    # ss.dependency 'EXFileSystemInterface'
+    # ss.dependency 'EXPermissionsInterface'
+    # ss.dependency 'EXCameraInterface'
+    # ss.dependency 'EXConstantsInterface'
   end
   s.subspec "AdMob" do |ss|
     ss.source_files = "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}"
