@@ -39,6 +39,27 @@ Pod::Spec.new do |s|
     # ss.dependency 'EXCameraInterface'
     # ss.dependency 'EXConstantsInterface'
   end
+  s.subspec 'EXCore' do |ss|
+      ss.source_files = 'modules/expo-core/ios/**/*.{h,m}'
+  end
+  s.subspec 'EXReactNativeAdapter' do |ss|
+      ss.source_files = 'modules/expo-react-native-adapter/ios/**/*.{h,m}'
+  end
+  s.subspec 'EXSensors' do |ss|
+      ss.source_files = 'modules/expo-sensors-interface/ios/**/*.{h,m}', 'modules/expo-sensors/ios/**/*.{h,m}'
+  end
+  s.subspec 'EXFileSystem' do |ss|
+      ss.source_files = 'modules/expo-file-system/ios/**/*.{h,m}', 'modules/expo-file-system-interface/ios/**/*.{h,m}'
+  end
+  s.subspec 'EXPermissions' do |ss|
+      ss.source_files = 'modules/expo-permissions/ios/**/*.{h,m}', 'modules/expo-permissions-interface/ios/**/*.{h,m}'
+  end
+  s.subspec 'EXCamera' do |ss|
+      ss.source_files = 'modules/expo-camera/ios/**/*.{h,m}', 'modules/expo-camera-interface/ios/**/*.{h,m}'
+  end
+  s.subspec 'EXConstants' do |ss|
+      ss.source_files = 'modules/expo-constants/ios/**/*.{h,m}', 'modules/expo-constants-interface/ios/**/*.{h,m}'
+  end
   s.subspec "AdMob" do |ss|
     ss.source_files = "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}"
     ss.dependency "ExpoKit/Core"
