@@ -3,7 +3,7 @@
 
 Pod::Spec.new do |s|
   s.name = "ExpoKit"
-  s.version = "2.7.4"
+  s.version = "2.7.5"
   s.summary = 'ExpoKit'
   s.description = 'ExpoKit allows native projects to integrate with the Expo SDK.'
   s.homepage = 'http://docs.expo.io'
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.subspec "Core" do |ss|
     ss.source_files = "ios/Exponent/**/*.{h,m}", "template-files/keys.json"
-    ss.exclude_files = "ios/Exponent/Supporting/**", "ios/Exponent/Versioned/Optional/**/*.{h,m}", "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}", "ios/Exponent/Versioned/Core/Api/EXFacebook.{h,m}", "ios/Exponent/Versioned/Core/Api/FBAds/*.{h,m}", "ios/Exponent/Kernel/Service/EXGoogleAuthManager.{h,m}", "ios/Exponent/Versioned/Core/Api/EXGoogle.{h,m}", "ios/Exponent/Versioned/Core/Api/GoogleMaps/*.{h,m}"
+    ss.exclude_files = "ios/Exponent/Supporting/**", "ios/Exponent/Versioned/Optional/**/*.{h,m}", "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}", "ios/Exponent/Versioned/Core/Api/EXFacebook.{h,m}", "ios/Exponent/Versioned/Core/Api/FBAds/*.{h,m}", "ios/Exponent/Kernel/Service/EXGoogleAuthManager.{h,m}", "ios/Exponent/Versioned/Core/Api/EXGoogle.{h,m}", "ios/Exponent/Versioned/Core/Api/Components/GoogleMaps/*.{h,m}"
 
     ss.preserve_paths = "ios/Exponent/**/*.{h,m}"
     ss.dependency 'Amplitude-iOS', '~> 3.8'
@@ -63,7 +63,7 @@ Pod::Spec.new do |s|
     ss.dependency 'GoogleSignIn', '~> 3.0'
   end
   s.subspec "GoogleMaps" do |ss|
-    ss.source_files = "ios/Exponent/Versioned/Core/Api/GoogleMaps/*.{h,m}"
+    ss.source_files = "ios/Exponent/Versioned/Core/Api/Components/GoogleMaps/*.{h,m}"
     ss.dependency "ExpoKit/Google"
     ss.dependency 'GoogleMaps', '~> 2.5.0'
     ss.dependency 'Google-Maps-iOS-Utils', '~> 2.1.0'
