@@ -12,13 +12,13 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.platform = :ios, "9.0"
   s.default_subspec = "Core"
-  s.source = { :git => "http://github.com/expo/expo.git" }
+  s.source = { :git => "git@github.com:MatrixEmpire/expo.git" }
 
   s.subspec "Core" do |ss|
     ss.source_files = "ios/Exponent/**/*.{h,m}", "template-files/keys.json"
-    ss.preserve_paths = "ios/Exponent/**/*.{h,m}"
     ss.exclude_files = "ios/Exponent/Supporting/**", "ios/Exponent/Versioned/Optional/**/*.{h,m}", "ios/Exponent/Versioned/Core/Api/AdMob/*.{h,m}", "ios/Exponent/Versioned/Core/Api/EXFacebook.{h,m}", "ios/Exponent/Versioned/Core/Api/FBAds/*.{h,m}", "ios/Exponent/Kernel/Service/EXGoogleAuthManager.{h,m}", "ios/Exponent/Versioned/Core/Api/EXGoogle.{h,m}", "ios/Exponent/Versioned/Core/Api/GoogleMaps/*.{h,m}"
 
+    ss.preserve_paths = "ios/Exponent/**/*.{h,m}"
     ss.dependency 'Amplitude-iOS', '~> 3.8'
     ss.dependency 'Analytics', '~> 3.5'
 
